@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
-
-/**
- *
- * @author ashle
- */
-public class IActivoRepository {
-    
+ 
+import Modelo.Activo;
+import java.util.List;
+ 
+public interface IActivoRepository {
+    void guardar(Activo activo);
+    void actualizar(Activo activo);
+    void eliminar(int id);
+    Activo buscarPorId(int id);
+    List<Activo> listarTodos();
 }

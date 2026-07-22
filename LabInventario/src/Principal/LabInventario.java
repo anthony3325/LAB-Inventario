@@ -1,13 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Principal;
 
-/**
- *
- * @author ashle
- */
+import Controlador.ActivoDAO;
+import Controlador.IActivoRepository;
+import Controlador.MantenimientoService;
+import Vista.VistaInventario;
+
 public class LabInventario {
-    
+
+    public static void main(String[] args) {
+        IActivoRepository repositorio = new ActivoDAO();
+        MantenimientoService servicio = new MantenimientoService(repositorio);
+        new VistaInventario(servicio).menu();
+    }
 }

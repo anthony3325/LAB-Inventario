@@ -8,9 +8,8 @@ package Excepciones;
  *
  * @author ashle
  */
-public class PersistenciaException extends RuntimeException {
-    public PersistenciaException(String mensaje, Throwable causa) {
-        super(mensaje, causa);
+public class OperacionNoPermitidaException extends RuntimeException {
+    public OperacionNoPermitidaException(String mensaje) {
+        super(mensaje);
     }
 }
-

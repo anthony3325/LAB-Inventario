@@ -2,15 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Excepciones;
+package Modelo;
 
 /**
  *
  * @author ashle
  */
-public class PersistenciaException extends RuntimeException {
-    public PersistenciaException(String mensaje, Throwable causa) {
-        super(mensaje, causa);
-    }
+public class IMantenimientoCalculable {
+    double calcularCostoMantenimiento(); 
 }
-

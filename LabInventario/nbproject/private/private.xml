@@ -11,6 +11,11 @@
             <file>file:/C:/Users/ashle/OneDrive/Documentos/Amor/Ultimo%20proyecto/LabInventario/src/Principal/LabInventario.java</file>
             <file>file:/C:/Users/ashle/OneDrive/Documentos/Amor/Ultimo%20proyecto/LabInventario/src/Excepciones/ActivoNoEncontradoException.java</file>
             <file>file:/C:/Users/ashle/OneDrive/Documentos/Amor/Ultimo%20proyecto/LabInventario/src/Excepciones/OperacionNoPermitidaException.java</file>
+            <file>file:/C:/Users/ashle/OneDrive/Documentos/Amor/Ultimo%20proyecto/LabInventario/src/Modelo/IMantenimientoCalculable.java</file>
+            <file>file:/C:/Users/ashle/OneDrive/Documentos/Amor/Ultimo%20proyecto/LabInventario/src/Modelo/IAsignable.java</file>
+            <file>file:/C:/Users/ashle/OneDrive/Documentos/Amor/Ultimo%20proyecto/LabInventario/src/Modelo/Hardware.java</file>
+            <file>file:/C:/Users/ashle/OneDrive/Documentos/Amor/Ultimo%20proyecto/LabInventario/src/Modelo/Periferico.java</file>
+            <file>file:/C:/Users/ashle/OneDrive/Documentos/Amor/Ultimo%20proyecto/LabInventario/src/Modelo/Licencia.java</file>
         </group>
     </open-files>
 </project-private>

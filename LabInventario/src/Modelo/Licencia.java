@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  *
@@ -10,27 +12,30 @@ package Modelo;
  */
 public class Licencia extends Activo {
  
+    private static final BigDecimal PORCENTAJE_RENOVACION = new BigDecimal("0.02");
+ 
     private String fechaExpiracion;
     private int numeroPuestos;
  
     public Licencia(String nombre, String marca, String modelo, String fechaAdquisicion,
-                     double costoBase, String estado, String fechaExpiracion, int numeroPuestos) {
+                     BigDecimal costoBase, String estado, String fechaExpiracion, int numeroPuestos) {
         super(nombre, marca, modelo, fechaAdquisicion, costoBase, estado);
+        Validador.validarFecha(fechaExpiracion, "fecha de expiracion");
+        Validador.validarEnteroPositivo(numeroPuestos, "numero de puestos");
         this.fechaExpiracion = fechaExpiracion;
         this.numeroPuestos = numeroPuestos;
     }
  
     public String getFechaExpiracion() { return fechaExpiracion; }
-    public void setFechaExpiracion(String fechaExpiracion) { this.fechaExpiracion = fechaExpiracion; }
- 
     public int getNumeroPuestos() { return numeroPuestos; }
-    public void setNumeroPuestos(int numeroPuestos) { this.numeroPuestos = numeroPuestos; }
  
     @Override
     public String getTipo() { return "Licencia"; }
  
     @Override
-    public double calcularCostoMantenimiento() {
-        return costoBase * 0.02 * numeroPuestos;
+    public BigDecimal calcularCostoMantenimiento() {
+        return costoBase.multiply(PORCENTAJE_RENOVACION)
+                .multiply(BigDecimal.valueOf(numeroPuestos))
+                .setScale(2, RoundingMode.HALF_UP);
     }
 }

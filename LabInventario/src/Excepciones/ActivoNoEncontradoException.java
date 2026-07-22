@@ -8,7 +8,7 @@ package Excepciones;
  *
  * @author ashle
  */
-public class ActivoNoEncontradoException {
+public class ActivoNoEncontradoException extends RuntimeException {
     public ActivoNoEncontradoException(String mensaje) {
         super(mensaje);
     }

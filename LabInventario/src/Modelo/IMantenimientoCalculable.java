@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
-
+import java.math.BigDecimal;
 /**
  *
  * @author ashle
  */
-public class IMantenimientoCalculable {
-    double calcularCostoMantenimiento(); 
+public interface IMantenimientoCalculable {
+    BigDecimal calcularCostoMantenimiento();
 }

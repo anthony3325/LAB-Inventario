@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
-
+import java.math.BigDecimal;
 /**
  *
  * @author ashle
@@ -15,11 +15,18 @@ public abstract class Activo implements IMantenimientoCalculable {
     protected String marca;
     protected String modelo;
     protected String fechaAdquisicion;
-    protected double costoBase;
+    protected BigDecimal costoBase;
     protected String estado;
  
     public Activo(String nombre, String marca, String modelo,
-                   String fechaAdquisicion, double costoBase, String estado) {
+                   String fechaAdquisicion, BigDecimal costoBase, String estado) {
+        Validador.validarTexto(nombre, "nombre");
+        Validador.validarTexto(marca, "marca");
+        Validador.validarTexto(modelo, "modelo");
+        Validador.validarFecha(fechaAdquisicion, "fecha de adquisicion");
+        Validador.validarMonto(costoBase, "costo base");
+        Validador.validarTexto(estado, "estado");
+ 
         this.nombre = nombre;
         this.marca = marca;
         this.modelo = modelo;
@@ -32,28 +39,17 @@ public abstract class Activo implements IMantenimientoCalculable {
     public void setId(int id) { this.id = id; }
  
     public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
- 
     public String getMarca() { return marca; }
-    public void setMarca(String marca) { this.marca = marca; }
- 
     public String getModelo() { return modelo; }
-    public void setModelo(String modelo) { this.modelo = modelo; }
- 
     public String getFechaAdquisicion() { return fechaAdquisicion; }
-    public void setFechaAdquisicion(String fechaAdquisicion) { this.fechaAdquisicion = fechaAdquisicion; }
- 
-    public double getCostoBase() { return costoBase; }
-    public void setCostoBase(double costoBase) { this.costoBase = costoBase; }
- 
+    public BigDecimal getCostoBase() { return costoBase; }
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
  
     public abstract String getTipo();
  
-   
     @Override
-    public abstract double calcularCostoMantenimiento();
+    public abstract BigDecimal calcularCostoMantenimiento();
  
     @Override
     public String toString() {
@@ -61,5 +57,3 @@ public abstract class Activo implements IMantenimientoCalculable {
                 ") | Estado: " + estado + " | Costo base: $" + costoBase;
     }
 }
-    
-

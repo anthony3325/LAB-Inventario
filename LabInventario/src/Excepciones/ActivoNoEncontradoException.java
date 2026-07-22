@@ -9,5 +9,7 @@ package Excepciones;
  * @author ashle
  */
 public class ActivoNoEncontradoException {
-    
+    public ActivoNoEncontradoException(String mensaje) {
+        super(mensaje);
+    }
 }

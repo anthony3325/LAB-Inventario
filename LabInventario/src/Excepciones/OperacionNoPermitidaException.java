@@ -8,6 +8,8 @@ package Excepciones;
  *
  * @author ashle
  */
-public class OperacionNoPermitidaException {
-    
+public class OperacionNoPermitidaException extends RuntimeException {
+    public OperacionNoPermitidaException(String mensaje) {
+        super(mensaje);
+    }
 }

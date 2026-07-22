@@ -9,5 +9,8 @@ package Modelo;
  * @author ashle
  */
 public class IAsignable {
-    
+    void asignar(String responsable);
+    void liberar();
+    boolean estaAsignado();
+   
 }

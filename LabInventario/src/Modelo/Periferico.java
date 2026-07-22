@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  *
@@ -10,28 +12,29 @@ package Modelo;
  */
 public class Periferico extends Activo implements IAsignable {
  
-    private String tipoPeriferico; 
+    private static final BigDecimal PORCENTAJE_MANTENIMIENTO = new BigDecimal("0.05");
+ 
+    private String tipoPeriferico;
     private String responsableAsignado;
  
     public Periferico(String nombre, String marca, String modelo, String fechaAdquisicion,
-                       double costoBase, String estado, String tipoPeriferico) {
+                       BigDecimal costoBase, String estado, String tipoPeriferico) {
         super(nombre, marca, modelo, fechaAdquisicion, costoBase, estado);
+        Validador.validarTexto(tipoPeriferico, "tipo de periferico");
         this.tipoPeriferico = tipoPeriferico;
         this.responsableAsignado = null;
     }
  
     public String getTipoPeriferico() { return tipoPeriferico; }
-    public void setTipoPeriferico(String tipoPeriferico) { this.tipoPeriferico = tipoPeriferico; }
  
-    public String getResponsableAsignado() { return responsableAsignado; }
     public void setResponsableAsignado(String responsableAsignado) { this.responsableAsignado = responsableAsignado; }
  
     @Override
     public String getTipo() { return "Periferico"; }
  
     @Override
-    public double calcularCostoMantenimiento() {
-        return costoBase * 0.05;
+    public BigDecimal calcularCostoMantenimiento() {
+        return costoBase.multiply(PORCENTAJE_MANTENIMIENTO).setScale(2, RoundingMode.HALF_UP);
     }
  
     @Override
@@ -42,6 +45,9 @@ public class Periferico extends Activo implements IAsignable {
  
     @Override
     public boolean estaAsignado() {
-        return responsableAsignado != null && !responsableAsignado.isEmpty();
+        return responsableAsignado != null && !responsableAsignado.isBlank();
     }
+ 
+    @Override
+    public String getResponsable() { return responsableAsignado; }
 }

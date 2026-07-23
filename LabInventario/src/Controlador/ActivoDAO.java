@@ -16,7 +16,7 @@ public class ActivoDAO implements IActivoRepository {
                 + "costoBase, estado, especificaciones, tipoPeriferico, fechaExpiracion, "
                 + "numeroPuestos, responsableAsignado) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        try (Connection conn = ConexionSQLite.conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = ConexionesSQLite.conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             cargarParametros(pstmt, activo);
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -30,7 +30,7 @@ public class ActivoDAO implements IActivoRepository {
                 + "costoBase=?, estado=?, especificaciones=?, tipoPeriferico=?, fechaExpiracion=?, "
                 + "numeroPuestos=?, responsableAsignado=? WHERE id=?";
 
-        try (Connection conn = ConexionSQLite.conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = ConexionesSQLite.conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             cargarParametros(pstmt, activo);
             pstmt.setInt(13, activo.getId());
             pstmt.executeUpdate();
@@ -42,7 +42,7 @@ public class ActivoDAO implements IActivoRepository {
     @Override
     public void eliminar(int id) {
         String sql = "DELETE FROM activo WHERE id = ?";
-        try (Connection conn = ConexionSQLite.conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = ConexionesSQLite.conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -53,7 +53,7 @@ public class ActivoDAO implements IActivoRepository {
     @Override
     public Activo buscarPorId(int id) {
         String sql = "SELECT * FROM activo WHERE id = ?";
-        try (Connection conn = ConexionSQLite.conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = ConexionesSQLite.conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             return rs.next() ? mapearActivo(rs) : null;
@@ -66,7 +66,7 @@ public class ActivoDAO implements IActivoRepository {
     public List<Activo> listarTodos() {
         List<Activo> lista = new ArrayList<>();
         String sql = "SELECT * FROM activo";
-        try (Connection conn = ConexionSQLite.conectar(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+        try (Connection conn = ConexionesSQLite.conectar(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 lista.add(mapearActivo(rs));
             }
